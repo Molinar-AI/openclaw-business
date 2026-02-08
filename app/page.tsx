@@ -5,6 +5,7 @@ import {
   Bot,
   Zap,
   Shield,
+  ShieldCheck,
   ArrowRight,
   Home,
   UtensilsCrossed,
@@ -12,10 +13,12 @@ import {
   Megaphone,
   ShoppingBag,
   GraduationCap,
-  Star,
   Github,
   Clock,
-  MessageCircle,
+  Lock,
+  Server,
+  KeyRound,
+  Container,
 } from 'lucide-react';
 
 export default async function LandingPage() {
@@ -64,18 +67,18 @@ export default async function LandingPage() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 sm:pt-28 sm:pb-32">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 border border-indigo-100 px-4 py-1.5 text-sm text-indigo-700 mb-8">
-              <Star className="h-3.5 w-3.5 fill-indigo-500 text-indigo-500" />
-              <span>176K+ GitHub stars &middot; Open source &middot; Powered by Claude</span>
+              <ShieldCheck className="h-3.5 w-3.5 text-indigo-500" />
+              <span>Secure &middot; Isolated &middot; Enterprise-grade AWS infrastructure</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-              Your AI assistant.{' '}
+              Run your business{' '}
               <br className="hidden sm:block" />
-              On Telegram.{' '}
-              <span className="text-primary">In 60 seconds.</span>
+              with a secure AI assistant.{' '}
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Save hours every week with your own AI assistant that handles scheduling,
-              follow-ups, customer questions, and daily busywork — all through Telegram.
+              The world&apos;s most popular open-source AI agent, deployed in your own
+              isolated container on AWS. Handle clients, customers, and daily operations
+              through Telegram — without exposing your business data.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
@@ -102,17 +105,54 @@ export default async function LandingPage() {
               <span><strong className="text-foreground">176K+</strong> GitHub Stars</span>
             </div>
             <div className="flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              <span><strong className="text-foreground">500+</strong> Contributors</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MessageCircle className="h-4 w-4" />
-              <span>Runs on <strong className="text-foreground">Telegram</strong></span>
-            </div>
-            <div className="flex items-center gap-2">
               <Shield className="h-4 w-4" />
-              <span>Powered by <strong className="text-foreground">Claude</strong></span>
+              <span><strong className="text-foreground">Isolated</strong> Containers</span>
             </div>
+            <div className="flex items-center gap-2">
+              <Lock className="h-4 w-4" />
+              <span><strong className="text-foreground">Encrypted</strong> API Keys</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Server className="h-4 w-4" />
+              <span>Powered by <strong className="text-foreground">AWS</strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Security Differentiator */}
+      <section className="py-20 sm:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              Your business deserves better than shared AI
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Most AI tools share infrastructure between users. OpenClaw Business gives
+              every instance its own isolated environment — your data never touches anyone else&apos;s.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <SecurityCard
+              icon={<Container className="h-5 w-5" />}
+              title="Isolated containers"
+              description="Each AI assistant runs in its own dedicated container on AWS Fargate. No shared compute, no noisy neighbors."
+            />
+            <SecurityCard
+              icon={<KeyRound className="h-5 w-5" />}
+              title="Encrypted secrets"
+              description="API keys stored with AWS SSM SecureString encryption. Never logged, never shared, never exposed."
+            />
+            <SecurityCard
+              icon={<Shield className="h-5 w-5" />}
+              title="Egress-only networking"
+              description="No inbound connections to your agent. It reaches out to Telegram and APIs — nothing reaches in."
+            />
+            <SecurityCard
+              icon={<Lock className="h-5 w-5" />}
+              title="Your keys, your control"
+              description="Bring your own Anthropic API key. Stop or delete your instance anytime. We never access your conversations."
+            />
           </div>
         </div>
       </section>
@@ -122,11 +162,11 @@ export default async function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              Built for how you actually work
+              Every business owner needs an AI employee
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Business owners, freelancers, and teams use OpenClaw to automate the tasks
-              that eat up their day.
+              Whether you&apos;re running your first business or scaling your tenth,
+              OpenClaw handles the work that keeps you from growing.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -195,24 +235,29 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* Value Props */}
+      {/* Why Business Owners Choose Us */}
       <section className="py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              Built for business owners who take security seriously
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ValueCard
               icon={<Clock className="h-5 w-5" />}
-              title="Save hours every week"
-              description="Stop doing repetitive tasks manually. Your AI assistant handles follow-ups, scheduling, and customer questions around the clock."
+              title="Get hours back every week"
+              description="Client follow-ups, scheduling, customer questions, review responses — your AI handles the busywork so you can focus on growth."
             />
             <ValueCard
               icon={<Shield className="h-5 w-5" />}
-              title="Secure & isolated"
-              description="Each instance runs in its own container on AWS. API keys are encrypted. No shared resources between customers."
+              title="Security you can trust"
+              description="Isolated containers, encrypted keys, egress-only networking. Your client data and business conversations stay private."
             />
             <ValueCard
               icon={<Zap className="h-5 w-5" />}
-              title="Always on"
-              description="Your assistant runs 24/7 on enterprise-grade infrastructure. No server to babysit, no downtime to worry about."
+              title="Works while you sleep"
+              description="Your AI assistant runs 24/7 on AWS. Customers get instant answers at 2am. No server to babysit, no downtime."
             />
           </div>
         </div>
@@ -240,13 +285,13 @@ export default async function LandingPage() {
                 <p className="mt-2 text-sm text-muted-foreground">Free trial included</p>
               </div>
               <ul className="mt-8 space-y-3 text-sm">
-                <PricingFeature text="Instant deployment on AWS" />
-                <PricingFeature text="Isolated secure container" />
-                <PricingFeature text="Encrypted API key storage" />
-                <PricingFeature text="24/7 uptime" />
-                <PricingFeature text="Web dashboard to manage instances" />
-                <PricingFeature text="Launch multiple instances" />
-                <PricingFeature text="Start, stop, reconfigure anytime" />
+                <PricingFeature text="Your own isolated container on AWS" />
+                <PricingFeature text="Encrypted API key storage (SSM SecureString)" />
+                <PricingFeature text="Egress-only networking — nothing reaches in" />
+                <PricingFeature text="24/7 uptime on enterprise infrastructure" />
+                <PricingFeature text="Web dashboard to manage all instances" />
+                <PricingFeature text="Launch multiple instances for different clients" />
+                <PricingFeature text="Start, stop, delete anytime — you're in control" />
               </ul>
               <div className="mt-8">
                 <Link
@@ -269,11 +314,11 @@ export default async function LandingPage() {
       <section className="py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            Ready to save hours every week?
+            Your business deserves an AI that works as hard as you do
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
-            Join thousands of business owners, freelancers, and teams who use OpenClaw
-            to get more done with less effort.
+            Secure, isolated, always on. Launch your AI assistant today and
+            start giving your customers the attention they deserve — 24/7.
           </p>
           <div className="mt-10">
             <Link
@@ -358,6 +403,26 @@ function ValueCard({
         {icon}
       </div>
       <h3 className="font-semibold text-lg">{title}</h3>
+      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{description}</p>
+    </div>
+  );
+}
+
+function SecurityCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="rounded-xl border bg-white p-6">
+      <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 mb-4">
+        {icon}
+      </div>
+      <h3 className="font-semibold">{title}</h3>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{description}</p>
     </div>
   );
