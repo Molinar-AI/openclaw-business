@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://business.molinar.ai
+
+# Sitemaps
+Sitemap: https://business.molinar.ai/sitemap.xml

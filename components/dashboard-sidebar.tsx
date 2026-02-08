@@ -34,7 +34,7 @@ export function DashboardSidebar({ organization, member }: DashboardSidebarProps
             <Bot className="h-4 w-4" />
           </div>
           <div>
-            <p className="font-semibold text-sm">OpenClaw Business</p>
+            <p className="font-semibold text-sm">Molinar Business</p>
             <p className="text-xs text-muted-foreground">{organization.organization_name}</p>
           </div>
         </div>

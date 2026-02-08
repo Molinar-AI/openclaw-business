@@ -32,7 +32,7 @@ export default async function DashboardPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Your AI Agents</h1>
-          <p className="text-muted-foreground">Manage your OpenClaw instances</p>
+          <p className="text-muted-foreground">Manage your AI agent instances</p>
         </div>
         <Button asChild>
           <Link href="/dashboard/instances/new">

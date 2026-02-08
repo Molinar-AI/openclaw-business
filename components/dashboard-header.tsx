@@ -8,7 +8,7 @@ export function DashboardHeader() {
     <header className="flex h-14 items-center gap-2 border-b px-4 md:hidden">
       <SidebarTrigger className="-ml-1" />
       <Separator orientation="vertical" className="h-6" />
-      <span className="text-sm font-semibold">OpenClaw Business</span>
+      <span className="text-sm font-semibold">Molinar Business</span>
     </header>
   );
 }

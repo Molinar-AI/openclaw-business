@@ -36,7 +36,7 @@ export default async function LandingPage() {
             <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
               <Bot className="h-4 w-4" />
             </div>
-            <span className="font-semibold text-lg">OpenClaw Business</span>
+            <span className="font-semibold text-lg">Molinar Business</span>
           </div>
           <div className="flex items-center gap-4">
             <Link
@@ -128,7 +128,7 @@ export default async function LandingPage() {
               Your business deserves better than shared AI
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Most AI tools share infrastructure between users. OpenClaw Business gives
+              Most AI tools share infrastructure between users. Molinar Business gives
               every instance its own isolated environment — your data never touches anyone else&apos;s.
             </p>
           </div>
@@ -166,7 +166,7 @@ export default async function LandingPage() {
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
               Whether you&apos;re running your first business or scaling your tenth,
-              OpenClaw handles the work that keeps you from growing.
+              Molinar handles the work that keeps you from growing.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -370,7 +370,7 @@ export default async function LandingPage() {
             <div className="inline-flex items-center justify-center w-6 h-6 rounded bg-primary text-primary-foreground">
               <Bot className="h-3 w-3" />
             </div>
-            <span>OpenClaw Business</span>
+            <span>Molinar Business</span>
           </div>
           <p>Built by Molinar AI</p>
         </div>
