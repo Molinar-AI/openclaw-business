@@ -4,6 +4,7 @@ import './globals.css';
 import { StytchProvider } from '@/components/stytch-provider';
 import { AmplitudeProvider } from '@/components/amplitude-provider';
 import { getSEOTags, renderSchemaTags } from '@/lib/seo';
+import { CrispChat } from '@/components/crisp-chat';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <StytchProvider>
           <AmplitudeProvider>{children}</AmplitudeProvider>
+          <CrispChat />
         </StytchProvider>
       </body>
     </html>
