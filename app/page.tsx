@@ -207,6 +207,66 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* The 6-Agent Stack */}
+      <section className="py-20 sm:py-28 bg-muted/30 border-y">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              Not one assistant. An entire team.
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              The top 1% of AI-powered businesses don&apos;t run one agent — they run six.
+              Each one specialized, working 24/7, feeding insights to the next.
+              We call it the 6-Agent Stack.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AgentCard
+              emoji="🔍"
+              name="Scout"
+              role="Research & Trends"
+              description="Monitors your market every few hours. Finds what competitors are doing, what customers are saying, and what content is working."
+            />
+            <AgentCard
+              emoji="✍️"
+              name="Writer"
+              role="Content Creation"
+              description="Drafts posts, emails, and campaigns in your brand voice — based on real data from Scout, not guesswork."
+            />
+            <AgentCard
+              emoji="📡"
+              name="Poster"
+              role="Distribution"
+              description="Publishes approved content across platforms at optimal times. Spaces posts, adds hashtags, handles media."
+            />
+            <AgentCard
+              emoji="💬"
+              name="Engage"
+              role="Community & Replies"
+              description="Replies to mentions, joins relevant conversations, answers DMs. Builds relationships while you sleep."
+            />
+            <AgentCard
+              emoji="📊"
+              name="Analyst"
+              role="Metrics & Optimization"
+              description="Tracks what's working, reports daily insights, and feeds winning patterns back to Writer. Your playbook gets smarter every day."
+            />
+            <AgentCard
+              emoji="🎯"
+              name="Hunter"
+              role="Lead Gen & Sales"
+              description="Finds people struggling with problems you solve. Qualifies prospects, drafts outreach, builds your pipeline automatically."
+            />
+          </div>
+          <div className="mt-12 text-center">
+            <p className="text-base text-muted-foreground max-w-xl mx-auto">
+              Most founders stop at building the product and wonder why nobody notices.{' '}
+              <strong className="text-foreground">The 6-Agent Stack runs your entire go-to-market — research, content, distribution, engagement, analytics, and sales — on autopilot.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works */}
       <section className="py-20 sm:py-28 bg-muted/30 border-y">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -565,6 +625,31 @@ function SecurityCard({
       </div>
       <h3 className="font-semibold">{title}</h3>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{description}</p>
+    </div>
+  );
+}
+
+function AgentCard({
+  emoji,
+  name,
+  role,
+  description,
+}: {
+  emoji: string;
+  name: string;
+  role: string;
+  description: string;
+}) {
+  return (
+    <div className="rounded-xl border bg-white p-6 hover:shadow-md transition-shadow">
+      <div className="flex items-center gap-3 mb-3">
+        <span className="text-2xl">{emoji}</span>
+        <div>
+          <h3 className="font-semibold text-lg">{name}</h3>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider">{role}</p>
+        </div>
+      </div>
+      <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
     </div>
   );
 }
