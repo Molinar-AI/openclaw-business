@@ -99,12 +99,12 @@ export default async function LandingPage() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 sm:pt-28 sm:pb-32 w-full" style={{ zIndex: 2 }}>
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-sm text-gray-300 mb-8 whitespace-nowrap backdrop-blur-sm">
-              <ShieldCheck className="h-3.5 w-3.5 text-green-400 flex-shrink-0" />
+              <ShieldCheck className="h-3.5 w-3.5 text-white flex-shrink-0" />
               <span className="hidden sm:inline">Powered by OpenClaw &middot; Secure &middot; Isolated &middot; AWS</span>
               <span className="sm:hidden">Powered by OpenClaw &middot; AWS</span>
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
-              The <span className="text-green-400">open source</span>{' '}
+              The open source{' '}
               <br className="hidden sm:block" />
               alternative to{' '}
               ai.com
@@ -444,7 +444,7 @@ export default async function LandingPage() {
             <a href="https://discord.gg/khn8zNepXC" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</a>
             <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
           </div>
-          <p>Built on <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition-colors">OpenClaw</a></p>
+          <p>Built on <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">OpenClaw</a></p>
         </div>
       </footer>
     </div>
@@ -462,7 +462,7 @@ function UseCaseCard({
 }) {
   return (
     <div className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 hover:bg-white/[0.1] transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-green-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-white mb-4 group-hover:scale-110 transition-transform duration-300">
         {icon}
       </div>
       <h3 className="font-bold text-lg text-white">{title}</h3>
@@ -510,7 +510,7 @@ function ValueCard({
 }) {
   return (
     <div className="group rounded-3xl bg-white/5 border border-white/10 p-8 text-center hover:bg-white/[0.08] transition-all duration-300 hover:-translate-y-1">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 text-green-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
         {icon}
       </div>
       <h3 className="font-bold text-xl text-white">{title}</h3>
@@ -530,7 +530,7 @@ function SecurityCard({
 }) {
   return (
     <div className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 hover:bg-white/[0.1] transition-all duration-300 hover:-translate-y-1">
-      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-green-500/10 text-green-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-white mb-4 group-hover:scale-110 transition-transform duration-300">
         {icon}
       </div>
       <h3 className="font-bold text-white">{title}</h3>
@@ -542,7 +542,7 @@ function SecurityCard({
 function PricingFeature({ text }: { text: string }) {
   return (
     <li className="flex items-center gap-3">
-      <svg className="h-4 w-4 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+      <svg className="h-4 w-4 text-white flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </svg>
       <span>{text}</span>
