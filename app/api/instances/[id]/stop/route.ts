@@ -35,6 +35,8 @@ export async function POST(_request: NextRequest, { params }: { params: { id: st
     .update({
       status: 'stopped',
       ecs_task_arn: null,
+      setup_phase: null,
+      setup_started_at: null,
       stopped_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     })

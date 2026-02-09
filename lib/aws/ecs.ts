@@ -1,4 +1,4 @@
-import { ECSClient, RunTaskCommand, StopTaskCommand, DescribeTasksCommand } from '@aws-sdk/client-ecs';
+import { ECSClient, RunTaskCommand, StopTaskCommand, DescribeTasksCommand, ExecuteCommandCommand } from '@aws-sdk/client-ecs';
 
 const ecs = new ECSClient({ region: process.env.AWS_REGION || 'us-west-2' });
 
@@ -12,6 +12,7 @@ export async function runOpenClawTask(envVars: Record<string, string>) {
     cluster: CLUSTER,
     taskDefinition: TASK_DEFINITION,
     launchType: 'FARGATE',
+    enableExecuteCommand: true,
     networkConfiguration: {
       awsvpcConfiguration: {
         subnets: SUBNETS,
@@ -49,4 +50,19 @@ export async function describeOpenClawTask(taskArn: string) {
   });
   const result = await ecs.send(command);
   return result.tasks?.[0];
+}
+
+/**
+ * Executes a command inside a running ECS container via ECS Exec.
+ * Requires enableExecuteCommand: true on the task.
+ */
+export async function execCommandInTask(taskArn: string, command: string, container = 'openclaw-agent') {
+  const cmd = new ExecuteCommandCommand({
+    cluster: CLUSTER,
+    task: taskArn,
+    container,
+    interactive: true,
+    command,
+  });
+  return ecs.send(cmd);
 }

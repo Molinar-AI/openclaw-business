@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const steps = [
   { number: 1, label: 'Basics' },
@@ -84,6 +84,10 @@ export function CreateInstanceForm() {
         throw new Error(data.error || 'Failed to create instance');
       }
       const instance = await res.json();
+
+      // Auto-start the instance immediately after creation
+      await fetch(`/api/instances/${instance.id}/start`, { method: 'POST' });
+
       router.push(`/dashboard/instances/${instance.id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong');
@@ -150,8 +154,28 @@ export function CreateInstanceForm() {
             <CardDescription>Connect your agent to messaging platforms</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            <div className="rounded-lg border border-blue-500/30 bg-blue-500/5 p-4 space-y-3">
+              <p className="text-sm font-medium">Create a Telegram bot first:</p>
+              <ol className="text-xs text-muted-foreground space-y-1.5 list-decimal list-inside">
+                <li>
+                  Open{' '}
+                  <a
+                    href="https://t.me/BotFather"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline inline-flex items-center gap-0.5"
+                  >
+                    @BotFather <ExternalLink className="h-3 w-3" />
+                  </a>
+                  {' '}on Telegram
+                </li>
+                <li>Send <code className="bg-muted px-1 py-0.5 rounded text-xs">/newbot</code> and follow the prompts</li>
+                <li>Choose a name and username (must end in &ldquo;Bot&rdquo;)</li>
+                <li>Copy the bot token and paste it below</li>
+              </ol>
+            </div>
             <div className="space-y-2">
-              <Label htmlFor="telegram">Telegram Bot Token (optional)</Label>
+              <Label htmlFor="telegram">Telegram Bot Token</Label>
               <Input
                 id="telegram"
                 type="password"
@@ -159,7 +183,6 @@ export function CreateInstanceForm() {
                 value={form.telegram_bot_token}
                 onChange={(e) => setForm({ ...form, telegram_bot_token: e.target.value })}
               />
-              <p className="text-xs text-muted-foreground">Create a bot via @BotFather on Telegram</p>
             </div>
             <div className="flex gap-2">
               <Button variant="outline" onClick={() => setStep(1)}>Back</Button>

@@ -54,12 +54,14 @@ export async function POST(_request: NextRequest, { params }: { params: { id: st
     return NextResponse.json({ error: 'Failed to start task' }, { status: 500 });
   }
 
-  // Update instance status
+  // Update instance status with setup tracking fields
   await supabase
     .from('openclaw_instances')
     .update({
       status: 'starting',
       ecs_task_arn: task.taskArn,
+      setup_phase: 'provisioning',
+      setup_started_at: new Date().toISOString(),
       started_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     })
