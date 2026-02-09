@@ -103,10 +103,10 @@ export default async function LandingPage() {
               <span className="sm:hidden">Powered by OpenClaw &middot; AWS</span>
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
-              The open source{' '}
+              The <span className="text-green-400">open source</span>{' '}
               <br className="hidden sm:block" />
               alternative to{' '}
-              <span className="text-green-400">ai.com</span>
+              ai.com
             </h1>
             <p className="mt-8 text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Deploy your own AI agent in 3 steps. Each agent runs in its own
