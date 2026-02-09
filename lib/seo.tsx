@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 const config = {
-  appName: 'Molinar - AI Agents That Can Do Anything',
+  appName: 'Molinar - Open Source AI Agents That Can Do Anything',
   appDescription:
     'The open-source AI agent with its own computer. Create an agent that can use any application and do any task — deployed in your own isolated container on AWS.',
   domainName: 'business.molinar.ai',
