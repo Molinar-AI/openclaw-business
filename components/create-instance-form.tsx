@@ -177,7 +177,17 @@ export function CreateInstanceForm() {
                 value={form.anthropic_api_key}
                 onChange={(e) => setForm({ ...form, anthropic_api_key: e.target.value })}
               />
-              <p className="text-xs text-muted-foreground">Your key is encrypted and stored securely in AWS.</p>
+              <p className="text-xs text-muted-foreground">
+                Your key is encrypted and stored securely in AWS. Don&apos;t have one?{' '}
+                <a
+                  href="https://console.anthropic.com/settings/keys"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-foreground"
+                >
+                  Get your free API key from Anthropic →
+                </a>
+              </p>
             </div>
             <Button onClick={() => setStep(2)} disabled={!form.name || !form.anthropic_api_key}>
               Next <KbdShortcut />
