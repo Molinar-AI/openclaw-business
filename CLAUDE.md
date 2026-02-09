@@ -148,8 +148,8 @@ Three tables: `organizations`, `members`, `openclaw_instances`
 - **Security Group**: Egress-only (no inbound required)
 - **Task Role**: `openclaw-task`
 - **Execution Role**: `openclaw-task-execution`
-- **Subnets**: subnet-REPLACE_ME_1, subnet-REPLACE_ME_2
-- **Account**: ACCOUNT_ID, us-west-2
+- **Subnets**: (set via ECS_SUBNETS env var)
+- **Account**: (set via AWS credentials), us-west-2
 - **Terraform**: In `Molinar-AI/molinar` repo, branch `infra/ecs-migration`, module `infra/modules/openclaw/`
 - **AWS CLI Profile**: Use `molinar-personal` for manual AWS operations (e.g. `AWS_PROFILE=molinar-personal aws ecs ...`)
 - **CloudWatch Logs**: `/ecs/openclaw-instances` (agent prefix: `openclaw/`, browser prefix: `browser/`)
