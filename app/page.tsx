@@ -20,6 +20,13 @@ import {
   Container,
 } from 'lucide-react';
 
+const shimmerStyle = {
+  background:
+    'linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)',
+  backgroundSize: '300% 300%',
+  animation: 'shimmer 3s ease infinite',
+};
+
 export default async function LandingPage() {
   const auth = await getAuthenticatedMember();
   if (auth) {
@@ -27,15 +34,23 @@ export default async function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gray-950 text-white">
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+
       {/* Nav */}
-      <nav className="border-b border-white/10 bg-black/60 backdrop-blur-xl sticky top-0 z-50">
+      <nav className="border-b border-white/5 bg-black/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/10 border border-white/10">
               <img src="/molinar-logo.svg" alt="Molinar" className="h-5 w-5" />
             </div>
-            <span className="font-semibold text-lg text-white">Molinar</span>
+            <span className="font-bold text-lg text-white">Molinar</span>
           </div>
           <div className="flex items-center gap-4">
             <Link
@@ -60,7 +75,8 @@ export default async function LandingPage() {
             </a>
             <Link
               href="/login"
-              className="inline-flex items-center justify-center rounded-full text-sm font-medium h-9 px-5 py-2 bg-green-500 text-black shadow hover:bg-green-400 transition-colors"
+              className="inline-flex items-center justify-center rounded-full text-sm font-semibold h-9 px-5 py-2 text-white shadow transition-transform hover:scale-105"
+              style={shimmerStyle}
             >
               Get Started
             </Link>
@@ -69,33 +85,53 @@ export default async function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-neutral-950 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(167,139,250,0.08),transparent_60%)]" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 sm:pt-28 sm:pb-32">
+      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+        {/* Blur splotches */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            background:
+              'linear-gradient(135deg, #2dd4bf 0%, #c084fc 100%)',
+            clipPath:
+              'polygon(10% 0%, 40% 0%, 65% 30%, 50% 70%, 15% 60%)',
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-15"
+          style={{
+            background:
+              'linear-gradient(225deg, #c084fc 0%, #2dd4bf 100%)',
+            clipPath:
+              'polygon(60% 10%, 100% 0%, 100% 50%, 80% 80%, 50% 50%)',
+          }}
+        />
+        <div className="absolute inset-0 bg-gray-950/60 backdrop-blur-3xl" />
+
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 sm:pt-28 sm:pb-32 w-full">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-1.5 text-sm text-gray-300 mb-8 whitespace-nowrap backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-sm text-gray-300 mb-8 whitespace-nowrap backdrop-blur-sm">
               <ShieldCheck className="h-3.5 w-3.5 text-green-400 flex-shrink-0" />
               <span className="hidden sm:inline">Powered by OpenClaw &middot; Secure &middot; Isolated &middot; AWS</span>
               <span className="sm:hidden">Powered by OpenClaw &middot; AWS</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
               The open source{' '}
               <br className="hidden sm:block" />
               alternative to{' '}
               <span className="text-green-400">ai.com</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="mt-8 text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Deploy your own AI agent in 3 steps. Each agent runs in its own
               isolated container on AWS. Open source, BYOK, and your keys never touch our database.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/login"
-                className="inline-flex items-center justify-center rounded-full text-base font-medium h-12 px-8 bg-green-500 text-black shadow-lg shadow-green-500/20 hover:bg-green-400 transition-colors gap-2 w-full sm:w-auto"
+                className="inline-flex items-center justify-center rounded-full text-base font-semibold h-14 px-10 text-white shadow-2xl transition-transform hover:scale-105 gap-2 w-full sm:w-auto"
+                style={shimmerStyle}
               >
                 Start Free Trial
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-5 w-5" />
               </Link>
               <span className="text-sm text-gray-500">
                 No credit card required &middot; Plans from $49/mo
@@ -106,7 +142,7 @@ export default async function LandingPage() {
       </section>
 
       {/* Social Proof Bar */}
-      <section className="border-y border-white/10 bg-white/[0.02]">
+      <section className="border-y border-white/5 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-sm text-gray-400">
             <div className="flex items-center gap-2">
@@ -134,13 +170,13 @@ export default async function LandingPage() {
       </section>
 
       {/* Security Differentiator */}
-      <section className="py-20 sm:py-28">
+      <section className="py-24 sm:py-32 bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
               Your business deserves better than shared AI
             </h2>
-            <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
               Most AI tools share infrastructure between users. Molinar gives
               every instance its own isolated environment — your data never touches anyone else&apos;s.
             </p>
@@ -171,13 +207,13 @@ export default async function LandingPage() {
       </section>
 
       {/* Use Cases */}
-      <section id="use-cases" className="py-20 sm:py-28">
+      <section id="use-cases" className="py-24 sm:py-32 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
               Every business owner needs an AI employee
             </h2>
-            <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
               Whether you&apos;re running your first business or scaling your tenth,
               Molinar handles the work that keeps you from growing.
             </p>
@@ -217,14 +253,30 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-20 sm:py-28 bg-white/[0.02] border-y border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* How It Works — Full-bleed gradient */}
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(135deg, #0f172a 0%, #1e1b4b 30%, #134e4a 70%, #0f172a 100%)',
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            background:
+              'linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)',
+            backgroundSize: '300% 300%',
+            animation: 'shimmer 6s ease infinite',
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
               Three steps. Sixty seconds.
             </h2>
-            <p className="mt-4 text-lg text-gray-400">
+            <p className="mt-6 text-lg text-gray-300">
               No servers. No Docker. No terminal. Just click and go.
             </p>
           </div>
@@ -249,10 +301,10 @@ export default async function LandingPage() {
       </section>
 
       {/* Why Business Owners Choose Us */}
-      <section className="py-20 sm:py-28">
+      <section className="py-24 sm:py-32 bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
               Built for business owners who take security seriously
             </h2>
           </div>
@@ -277,23 +329,23 @@ export default async function LandingPage() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="py-20 sm:py-28 bg-white/[0.02] border-y border-white/10">
+      <section id="pricing" className="py-24 sm:py-32 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
               Simple, transparent pricing
             </h2>
-            <p className="mt-4 text-lg text-gray-400">
+            <p className="mt-6 text-lg text-gray-300">
               Choose the plan that fits your business. Scale up anytime.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {/* Starter */}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-xl p-8">
+            <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 hover:bg-white/[0.08] transition-all duration-300 hover:-translate-y-1">
               <div className="text-center">
                 <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">Starter</p>
                 <div className="mt-2 flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold tracking-tight text-white">$49</span>
+                  <span className="text-5xl font-extrabold tracking-tight text-white">$49</span>
                   <span className="text-lg text-gray-400">/month</span>
                 </div>
                 <p className="mt-2 text-sm text-gray-500">For small teams getting started</p>
@@ -309,7 +361,7 @@ export default async function LandingPage() {
               <div className="mt-8">
                 <Link
                   href="/login"
-                  className="inline-flex items-center justify-center rounded-full text-sm font-medium h-11 px-8 border border-white/20 text-white hover:bg-white/10 transition-colors w-full gap-2"
+                  className="inline-flex items-center justify-center rounded-full text-sm font-medium h-11 px-8 border border-white/20 text-white hover:bg-white/10 transition-all duration-300 w-full gap-2"
                 >
                   Get Started
                   <ArrowRight className="h-4 w-4" />
@@ -317,14 +369,19 @@ export default async function LandingPage() {
               </div>
             </div>
             {/* Pro */}
-            <div className="rounded-2xl border border-green-500/30 bg-white/[0.05] backdrop-blur-xl p-8 relative shadow-lg shadow-green-500/5">
+            <div className="rounded-3xl border-2 border-transparent bg-white/5 backdrop-blur-xl p-8 relative hover:-translate-y-1 transition-all duration-300" style={{ borderImage: 'linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1' }}>
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-green-500 text-black text-xs font-medium px-3 py-1 rounded-full">Most Popular</span>
+                <span
+                  className="text-white text-xs font-semibold px-4 py-1 rounded-full"
+                  style={shimmerStyle}
+                >
+                  Most Popular
+                </span>
               </div>
               <div className="text-center">
                 <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">Pro</p>
                 <div className="mt-2 flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold tracking-tight text-white">$149</span>
+                  <span className="text-5xl font-extrabold tracking-tight text-white">$149</span>
                   <span className="text-lg text-gray-400">/month</span>
                 </div>
                 <p className="mt-2 text-sm text-gray-500">For growing teams that need more power</p>
@@ -340,7 +397,8 @@ export default async function LandingPage() {
               <div className="mt-8">
                 <Link
                   href="/login"
-                  className="inline-flex items-center justify-center rounded-full text-sm font-medium h-11 px-8 bg-green-500 text-black shadow hover:bg-green-400 transition-colors w-full gap-2"
+                  className="inline-flex items-center justify-center rounded-full text-sm font-semibold h-11 px-8 text-white shadow transition-transform hover:scale-105 w-full gap-2"
+                  style={shimmerStyle}
                 >
                   Get Started
                   <ArrowRight className="h-4 w-4" />
@@ -355,29 +413,37 @@ export default async function LandingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 sm:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            background: 'linear-gradient(135deg, #2dd4bf 0%, #c084fc 100%)',
+            clipPath: 'polygon(0% 20%, 100% 0%, 100% 80%, 0% 100%)',
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
             Your business deserves an AI that works as hard as you do
           </h2>
-          <p className="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
+          <p className="mt-6 text-lg text-gray-300 max-w-xl mx-auto">
             Secure, isolated, always on. Launch your AI assistant today and
             start giving your customers the attention they deserve — 24/7.
           </p>
-          <div className="mt-10">
+          <div className="mt-12">
             <Link
               href="/login"
-              className="inline-flex items-center justify-center rounded-full text-base font-medium h-12 px-8 bg-green-500 text-black shadow-lg shadow-green-500/20 hover:bg-green-400 transition-colors gap-2"
+              className="inline-flex items-center justify-center rounded-full text-base font-semibold h-14 px-10 text-white shadow-2xl transition-transform hover:scale-105 gap-2"
+              style={shimmerStyle}
             >
               Get Started Free
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-8">
+      <footer className="bg-black border-t border-white/5 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
           <div className="flex items-center gap-2">
             <div className="inline-flex items-center justify-center w-6 h-6 rounded bg-white/10 border border-white/10">
@@ -406,11 +472,11 @@ function UseCaseCard({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-xl p-6 hover:bg-white/[0.08] transition-colors">
-      <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 text-green-400 mb-4">
+    <div className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 hover:bg-white/[0.1] transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-green-400 mb-4 group-hover:scale-110 transition-transform duration-300">
         {icon}
       </div>
-      <h3 className="font-semibold text-lg text-white">{title}</h3>
+      <h3 className="font-bold text-lg text-white">{title}</h3>
       <p className="mt-2 text-sm text-gray-400 leading-relaxed">{description}</p>
     </div>
   );
@@ -427,11 +493,19 @@ function StepCard({
 }) {
   return (
     <div className="text-center">
-      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-500 text-black text-lg font-bold mb-4">
+      <div
+        className="inline-flex items-center justify-center w-14 h-14 rounded-full text-white text-xl font-bold mb-6 shadow-lg"
+        style={{
+          background:
+            'linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)',
+          backgroundSize: '300% 300%',
+          animation: 'shimmer 3s ease infinite',
+        }}
+      >
         {step}
       </div>
-      <h3 className="font-semibold text-lg text-white">{title}</h3>
-      <p className="mt-2 text-sm text-gray-400 leading-relaxed">{description}</p>
+      <h3 className="font-bold text-xl text-white">{title}</h3>
+      <p className="mt-3 text-sm text-gray-300 leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -446,12 +520,12 @@ function ValueCard({
   description: string;
 }) {
   return (
-    <div className="text-center px-4">
-      <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 text-green-400 mb-4">
+    <div className="group rounded-3xl bg-white/5 border border-white/10 p-8 text-center hover:bg-white/[0.08] transition-all duration-300 hover:-translate-y-1">
+      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 text-green-400 mb-6 group-hover:scale-110 transition-transform duration-300">
         {icon}
       </div>
-      <h3 className="font-semibold text-lg text-white">{title}</h3>
-      <p className="mt-2 text-sm text-gray-400 leading-relaxed">{description}</p>
+      <h3 className="font-bold text-xl text-white">{title}</h3>
+      <p className="mt-3 text-sm text-gray-400 leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -466,11 +540,11 @@ function SecurityCard({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-xl p-6">
-      <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-green-500/10 text-green-400 mb-4">
+    <div className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 hover:bg-white/[0.1] transition-all duration-300 hover:-translate-y-1">
+      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-green-500/10 text-green-400 mb-4 group-hover:scale-110 transition-transform duration-300">
         {icon}
       </div>
-      <h3 className="font-semibold text-white">{title}</h3>
+      <h3 className="font-bold text-white">{title}</h3>
       <p className="mt-2 text-sm text-gray-400 leading-relaxed">{description}</p>
     </div>
   );
