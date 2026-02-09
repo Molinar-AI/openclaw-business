@@ -102,6 +102,10 @@ export default async function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-sm text-gray-400">
             <div className="flex items-center gap-2">
+              <Users className="h-4 w-4" />
+              <span><strong className="text-white">200+</strong> Customers</span>
+            </div>
+            <div className="flex items-center gap-2">
               <Github className="h-4 w-4" />
               <span><strong className="text-white">176K+</strong> GitHub Stars</span>
             </div>
