@@ -75,7 +75,7 @@ export default async function LandingPage() {
               The open source{' '}
               <br className="hidden sm:block" />
               alternative to{' '}
-              <a href="https://ai.com" target="_blank" rel="noopener noreferrer" className="text-green-400 underline decoration-2 underline-offset-4 hover:text-green-300 transition-colors">ai.com</a>
+              <span className="text-green-400">ai.com</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
               Deploy your own AI agent in 3 steps. Each agent runs in its own
