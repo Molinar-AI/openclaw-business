@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarFooter } from '@/components/ui/sidebar';
-import { Bot, LayoutDashboard, Plus, LogOut, CreditCard } from 'lucide-react';
+import { LayoutDashboard, Plus, LogOut, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface DashboardSidebarProps {
@@ -30,11 +30,11 @@ export function DashboardSidebar({ organization, member }: DashboardSidebarProps
     <Sidebar>
       <SidebarHeader className="border-b px-4 py-3">
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
-            <Bot className="h-4 w-4" />
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white border">
+            <img src="/molinar-logo.svg" alt="Molinar" className="h-5 w-5" />
           </div>
           <div>
-            <p className="font-semibold text-sm">Molinar Business</p>
+            <p className="font-semibold text-sm">Molinar</p>
             <p className="text-xs text-muted-foreground">{organization.organization_name}</p>
           </div>
         </div>

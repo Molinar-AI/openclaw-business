@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { getAuthenticatedMember } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import {
-  Bot,
   Zap,
   Shield,
   ShieldCheck,
@@ -33,10 +32,10 @@ export default async function LandingPage() {
       <nav className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
-              <Bot className="h-4 w-4" />
+            <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white border">
+              <img src="/molinar-logo.svg" alt="Molinar" className="h-5 w-5" />
             </div>
-            <span className="font-semibold text-lg">Molinar Business</span>
+            <span className="font-semibold text-lg">Molinar</span>
           </div>
           <div className="flex items-center gap-4">
             <Link
@@ -128,7 +127,7 @@ export default async function LandingPage() {
               Your business deserves better than shared AI
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Most AI tools share infrastructure between users. Molinar Business gives
+              Most AI tools share infrastructure between users. Molinar gives
               every instance its own isolated environment — your data never touches anyone else&apos;s.
             </p>
           </div>
@@ -367,12 +366,12 @@ export default async function LandingPage() {
       <footer className="border-t py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <div className="inline-flex items-center justify-center w-6 h-6 rounded bg-primary text-primary-foreground">
-              <Bot className="h-3 w-3" />
+            <div className="inline-flex items-center justify-center w-6 h-6 rounded bg-white border">
+              <img src="/molinar-logo.svg" alt="Molinar" className="h-4 w-4" />
             </div>
-            <span>Molinar Business</span>
+            <span>Molinar</span>
           </div>
-          <p>Built by Molinar AI</p>
+          <p>Built by Molinar</p>
         </div>
       </footer>
     </div>
